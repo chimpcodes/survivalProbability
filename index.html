@@ -11,19 +11,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="charts.js"></script>
   <style>
-    body {}
+    body {
+
+    }
   </style>
 
 </head>
 
 <body>
   <h1>Survival Probability Calculator</h1>
+  <a href="https://github.com/chimpcodes/survivalProbability">Github Page</a>
   <h4>Check all that apply to the group:</h4>
 
 
   <div id="options"></div>
   <button id="submit">Submit</button>
-  <canvas id="radar"></canvas>
+  <canvas id="radar" width="500"></canvas>
 
   <script>
 
@@ -114,44 +117,44 @@
     ]
 
     let teams = [
-"Hakim, EJ, Jeff",
-"Chris, Honora, Luke",
-"Dani",
-"Shane, Dani, Alana",
-"Laura, Eva",
-"Angel, Steven, Ryan",
-"Kim, Carrie, Darrin",
-"Phaedra, Tawny, Allysa",
-"Clarence, Jake, Stacey",
-"Fernando, Matt, Shannon",
-"Charlie, Matt, Russel",
-"Giovana, Lacey, Amber",
-"Matt",
-"Jeremy, Gary, Trent",
-"Melissa, Kaila, Lindsey",
-"Lacey, Shane, Clarence",
-"Sarah, Duck, Melanie",
-"Jeff, Laura",
-"Charlie, Duck, Russel",
-"Gabriel, James, Duke",
-"Rylie, Manu, Christina",
-"Nicole, Angela, Max",
-"Bulent, Makani, Kate",
-"Suzanne, Seth, Dawn",
-"Wes, Gwen, Joshua",
-"Sarah, Jon, Ryan",
-"Matt, Riley, Ryan",
-"Steven, Lacey, Jeff ",
-"Max, Amber, Gary",
-"EJ, Sarah, Suzänne",
-"Jamie, Dan, Kaila",
-"Steven, Tim, Lisa", 
-"Gary, Waz, Rod",
-"Amber, Jen, Trish",
-"Gabrielle, Joe, Ky",
-"Trish, Rod, Jeremy",
-"Jake, Sarah, Waz",
-"Wes, Sarah, Jermaine",
+      "Hakim, EJ, Jeff",
+      "Chris, Honora, Luke",
+      "Dani",
+      "Shane, Dani, Alana",
+      "Laura, Eva",
+      "Angel, Steven, Ryan",
+      "Kim, Carrie, Darrin",
+      "Phaedra, Tawny, Allysa",
+      "Clarence, Jake, Stacey",
+      "Fernando, Matt, Shannon",
+      "Charlie, Matt, Russel",
+      "Giovana, Lacey, Amber",
+      "Matt",
+      "Jeremy, Gary, Trent",
+      "Melissa, Kaila, Lindsey",
+      "Lacey, Shane, Clarence",
+      "Sarah, Duck, Melanie",
+      "Jeff, Laura",
+      "Charlie, Duck, Russel",
+      "Gabriel, James, Duke",
+      "Rylie, Manu, Christina",
+      "Nicole, Angela, Max",
+      "Bulent, Makani, Kate",
+      "Suzanne, Seth, Dawn",
+      "Wes, Gwen, Joshua",
+      "Sarah, Jon, Ryan",
+      "Matt, Riley, Ryan",
+      "Steven, Lacey, Jeff ",
+      "Max, Amber, Gary",
+      "EJ, Sarah, Suzänne",
+      "Jamie, Dan, Kaila",
+      "Steven, Tim, Lisa",
+      "Gary, Waz, Rod",
+      "Amber, Jen, Trish",
+      "Gabrielle, Joe, Ky",
+      "Trish, Rod, Jeremy",
+      "Jake, Sarah, Waz",
+      "Wes, Sarah, Jermaine",
 
     ]
 
@@ -170,7 +173,7 @@
       let iString = ""
 
       attributes.forEach(attr => {
-        iString += document.getElementById(attr).checked?"1":"0"
+        iString += document.getElementById(attr).checked ? "1" : "0"
       })
 
       //alert(iString)
@@ -191,7 +194,7 @@
       let avgScore = (scores[winners[0]] + scores[winners[1]] + scores[winners[2]]) / 3
 
 
-      alert("Your team is most similar to that of " + teams[winners[0]] + ". Your teams estimated XLR is " + ((avgScore / 100) * 10).toFixed(1) )
+      alert("Your team is most similar to that of " + teams[winners[0]] + ". Your teams estimated XLR is " + ((avgScore / 100) * 10).toFixed(1))
 
       avg3([data[winners[0]], data[winners[1]], data[winners[2]]])
 
@@ -201,15 +204,15 @@
 
     }
 
-    let avgs = [0.0263157894736842,	0.473684210526316,	0.657894736842105,	0.263157894736842,	0.605263157894737,	0.657894736842105,	0.0526315789473684,	0.421052631578947,	0.0526315789473684,	0.394736842105263,	0.368421052631579,	0.394736842105263,	0.157894736842105,	0.394736842105263,	0.131578947368421,	0.236842105263158,	0.447368421052632]
+    let avgs = [0.0263157894736842, 0.473684210526316, 0.657894736842105, 0.263157894736842, 0.605263157894737, 0.657894736842105, 0.0526315789473684, 0.421052631578947, 0.0526315789473684, 0.394736842105263, 0.368421052631579, 0.394736842105263, 0.157894736842105, 0.394736842105263, 0.131578947368421, 0.236842105263158, 0.447368421052632]
 
     let avgs2 = [...avgs]
 
-    function avg3(sArray){
+    function avg3(sArray) {
       console.log(sArray)
 
-      avgs2.forEach((v,i) => {
-        let newAvg = ( Number(sArray[0].slice(i, i + 1)) +  Number(sArray[1].slice(i, i + 1)) + Number(sArray[2].slice(i, i + 1))) / 3
+      avgs2.forEach((v, i) => {
+        let newAvg = (Number(sArray[0].slice(i, i + 1)) + Number(sArray[1].slice(i, i + 1)) + Number(sArray[2].slice(i, i + 1))) / 3
         avgs2[i] = newAvg
       })
 
@@ -219,7 +222,7 @@
 
     }
 
-    
+
 
     function findBest(s, d) {
       let minDif = 1000
@@ -243,35 +246,35 @@
     }
 
     const cdata = {
-  labels: [
-   ...attributes
-  ],
-  datasets: [{
-    label: 'My Group Average',
-    data: [0, 0,0, 0, 0, 0, 0],
-    fill: true,
-    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-    borderColor: 'rgb(255, 99, 132)',
-    pointBackgroundColor: 'rgb(255, 99, 132)',
-    pointBorderColor: '#fff',
-    pointHoverBackgroundColor: '#fff',
-    pointHoverBorderColor: 'rgb(255, 99, 132)'
-  }, {
-    label: 'Average',
-    data: [...avgs],
-    fill: true,
-    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-    borderColor: 'rgb(54, 162, 235)',
-    pointBackgroundColor: 'rgb(54, 162, 235)',
-    pointBorderColor: '#fff',
-    pointHoverBackgroundColor: '#fff',
-    pointHoverBorderColor: 'rgb(54, 162, 235)'
-  }]
-};
+      labels: [
+        ...attributes
+      ],
+      datasets: [{
+        label: 'My Group Average',
+        data: [0, 0, 0, 0, 0, 0, 0],
+        fill: true,
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgb(255, 99, 132)',
+        pointBackgroundColor: 'rgb(255, 99, 132)',
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: 'rgb(255, 99, 132)'
+      }, {
+        label: 'Average',
+        data: [...avgs],
+        fill: true,
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgb(54, 162, 235)',
+        pointBackgroundColor: 'rgb(54, 162, 235)',
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: 'rgb(54, 162, 235)'
+      }]
+    };
 
     let ctx = document.getElementById("radar")
 
-    const myChart = new Chart(ctx, {type:"radar", data:cdata});
+    const myChart = new Chart(ctx, { type: "radar", data: cdata, options: {responsive:false}});
 
   </script>
 
