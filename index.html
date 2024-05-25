@@ -11,9 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="charts.js"></script>
   <style>
-    body {
-
-    }
+    body {}
   </style>
 
 </head>
@@ -29,6 +27,20 @@
   <canvas id="radar" width="500"></canvas>
 
   <script>
+
+    const beta1 = [
+      -0.5765729729729729, 0.05926944444444444,
+      0.26872430769230743, -0.038094999999999976,
+      0.11981565217391307, 0.15181292307692298,
+      -0.06481111111111112, 0.21781988636363642,
+      -0.4166805555555557, 0.0637849275362319,
+      -0.32342976190476214, -0.19323826086956528,
+      -0.20488333333333306, -0.1565269565217392,
+      0.044448484848484876, -0.20179310344827586,
+      -0.34175518207282934
+    ]
+
+    const beta0 = 0.6021921571521125
 
     let data = [
       "00111101001100000",
@@ -193,8 +205,16 @@
 
       let avgScore = (scores[winners[0]] + scores[winners[1]] + scores[winners[2]]) / 3
 
+      let matchedXLR =  (avgScore / 100) * 10
+      let rXLR = regression(iString) * 10
 
-      alert("Your team is most similar to that of " + teams[winners[0]] + ". Your teams estimated XLR is " + ((avgScore / 100) * 10).toFixed(1))
+      let avgXLR = ((matchedXLR + rXLR ) / 2).toFixed(1)
+
+      if (avgXLR > 10){avgXLR = 10}
+      if (avgXLR < 0){avgXLR = 0}
+
+
+      alert("Your team is most similar to that of " + teams[winners[0]] + ". Your estimated XLR is " + avgXLR)
 
       avg3([data[winners[0]], data[winners[1]], data[winners[2]]])
 
@@ -274,7 +294,27 @@
 
     let ctx = document.getElementById("radar")
 
-    const myChart = new Chart(ctx, { type: "radar", data: cdata, options: {responsive:false}});
+    const myChart = new Chart(ctx, { type: "radar", data: cdata, options: { responsive: false } });
+
+  function stringToArray(s) {
+    let arr = []
+    for (let i = 0; i < s.length; i++) {
+      arr.push(Number(s.slice(i, i + 1)))
+    }
+    return arr
+  }
+
+    function regression(input) {
+
+          let x = stringToArray(input)
+
+          let sum = beta0;
+          for (let j = 0; j < beta1.length; j++) {
+            sum += beta1[j] * x[j];
+          }
+          return sum;
+      
+    }
 
   </script>
 
