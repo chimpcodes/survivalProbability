@@ -11,7 +11,7 @@ The data is contained in the data folder and consists of two spreadsheets in Lib
 Simple pattern matching (minimum abs difference) is used to find the 3 best matches. The survival rates are averaged together with a second result derived from multi-feature linear regression. As we progress, we plan to investigate using other non-linear methods of machine learning as well. 
 
 ## Modification
-To run the regression code, the `test.js` file can be renamed to `test.html` (enclose the code in `<script>` tags). It can also be run by cloning the repo, opening the folder in Visual Studio Code and running `node test` in the terminal (nodeJS is required for this method).
+To run the regression code with modified data, the `train.js` file can be renamed to `train.html` (enclose the code in `<script>` tags). It can also be run by cloning the repo, opening the folder in Visual Studio Code and running `node train` in the terminal (nodeJS is required for this method). The resulting "beta" values can then be imported into the `index.html` file.
 
 ## To-DO
 1. Fact-check data in the groups spreadsheet (watching all episodes may be required!)
