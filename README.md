@@ -13,7 +13,7 @@ Simple pattern matching (minimum abs difference) is used to find the 3 best matc
 ## Modification
 To run the regression code, the `test.js` file can be renamed to `test.html` (enclose the code in `<script>` tags). It can also be run by cloning the repo, opening the folder in Visual Studio Code and running `node test` in the terminal (nodeJS is required for this method).
 
-##To-DO
+## To-DO
 1. Fact-check data in the groups spreadsheet (watching all episodes may be required!)
 2. Create utility to import data from csv into both the training and index files
 
